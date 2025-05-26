@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head section as index.html -->
+</head>
+<body>
+    <!-- Same header as index.html -->
+
+    <main>
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <article class="project-card">
+                <h3>Project 1</h3>
+                <img src="project1.jpg" alt="Screenshot of e-commerce website">
+                <p>E-commerce platform built with React</p>
+                <button onclick="openModal('modal1')">View Details</button>
+            </article>
+            <!-- Add 2 more project cards -->
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal('modal1')">&times;</span>
+            <h3>Project 1 Details</h3>
+            <p>Detailed description and technologies used...</p>
+        </div>
+    </div>
+
+    <!-- Same footer as index.html -->
+</body>
+</html>
