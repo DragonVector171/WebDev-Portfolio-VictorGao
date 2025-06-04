@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Gao // WebDev Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --header-max-width: 1200px; }
+        body { font-family: 'Google Sans', Arial, sans-serif; margin: 0; }
+        header {
+            background-color: var(--header-bg); background-image: repeating-linear-gradient(135deg,rgba(255,184,108,0.10) 0px,rgba(255,184,108,0.08) 3px,transparent 3px,transparent 32px); border-bottom: 1.5px solid var(--primary); width: 100%;
+        }
+        .header-container { max-width: var(--header-max-width); margin: 0 auto; box-sizing: border-box; padding: 24px 30px 18px 30px; }
+        .header-row { display: flex; align-items: baseline; justify-content: space-between; width: 100%; }
+        .main-title-group { display: flex; align-items: baseline; }
+        .main-title { font-size: 2.1rem; font-weight: 700; color: #222; margin: 0; }
+        .title-slash { color: #4285F4; font-size: 2rem; margin: 0 0.27rem 0 0.2rem; font-weight: 700; }
+        .portfolio-subtitle { font-size: 1.07rem; color: #666; letter-spacing: 0.12em; font-weight: 700; text-transform: uppercase; margin-left: 0.18rem; margin-bottom: 1px; line-height: 1.08; }
+        nav { display: flex; align-items: baseline; gap: 0.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 1rem; font-weight: 600; line-height: 1.08; margin: 0 7px; padding: 6px 11px; border: none; outline: none; transition: color 0.14s; background: none; display: inline-block; }
+        nav a.active { color: var(--primary); }
+        nav a:hover, nav a:focus { color: var(--primary); background: none; }
+        @media (max-width: 900px) { .header-container { padding: 12px 4px 10px 4px; } .header-row { flex-direction: column; align-items: flex-start; gap: 10px; } .main-title { font-size: 1.15rem; } .portfolio-subtitle { font-size: 0.79rem; } nav { justify-content: flex-end; margin-top: 4px; flex-wrap: wrap; }
+        }
+
+        /* Design Thinking Section */
+        .design-thinking-section {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .design-thinking-step-title {
+            background: linear-gradient(90deg, #f7f7f7 78%, #e3f0fd 100%);
+            border-left: 3.5px solid #222;
+            padding: 12px 12px 8px 18px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #222;
+        }
+
+        .design-thinking-step p {
+            margin: 6px 0;
+            color: #444;
+        }
+
+        h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header>
+    <div class="header-container">
+        <div class="header-row">
+            <span class="main-title-group">
+                <span class="main-title">Victor Gao</span>
+                <span class="title-slash">//</span>
+                <span class="portfolio-subtitle">WebDev Portfolio</span>
+            </span>
+            <nav aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="design-thinking.html" class="active">Design Thinking</a>
+                <a href="global-goals.html">Global Goals</a>
+                <a href="accessibility.html">Accessibility</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<main class="container main-spaced" id="main-content">
+    <section class="design-thinking-section">
+        <h2><strong>Applying the Design Thinking Process</strong></h2>
+        <p>
+            This page notes how my design of this website was based on the "Design Thinking Process", a five-stage model that makes sure my website makes sense and is useful/usable.
+        </p>
+        <div class="design-thinking-step">
+            <div class="design-thinking-step-title">
+                <h3><strong>1. Empathize</strong></h3>
+            </div>
+            <p>The primary goal of this website to be emphasized is to fulfill all requirements and showcase my personal portfolio as well as present myself.</p>
+        </div>
+        <div class="design-thinking-step">
+            <div class="design-thinking-step-title">
+                <h3><strong>2. Define</strong></h3>
+            </div>
+            <p>Following the rubric, clear requirements to be defined would be accessibility features, presentation of self, portfolio of >= 3 projects and hobbies, as well as demonstration of design thinking and U.N. global goals.</p>
+        </div>
+        <div class="design-thinking-step">
+            <div class="design-thinking-step-title">
+                <h3><strong>3. Ideate</strong></h3>
+            </div>
+            <p>Brainstorming of overrall UI/UX design, including layouts, color schemes and website structure. Multiple versions of the website were executed as well as overhauled, heavy inspiration was finally taken from Google LLC's Material design style, as well as corresponding fonts so that the website looked simple, concise, beautiful and usable. </p>
+        </div>
+        <div class="design-thinking-step">
+            <div class="design-thinking-step-title">
+                <h3><strong>4. Prototype</strong></h3>
+            </div>
+            <p>I built initial HTML/CSS pages, focusing on accessibility and responsive design to ensure that the webpage looked good on different scales and looked "evenly distributed" and not laggy.</p>
+        </div>
+        <div class="design-thinking-step">
+            <div class="design-thinking-step-title">
+                <h3><strong>5. Test</strong></h3>
+            </div>
+            <p>I got feedback from fellow classmates on the usability and overrall quality of the website, redid multiple versions with different layouts so that the website looked good.</p>
+        </div>
+        <p>
+            This process let me produce a website that both fulfills all requirements and also looks good.
+        </p>
+        <div class="design-thinking-image" style="margin-top: 18px;">
+            <img src="images/design.jpg" alt="Design Thinking Process diagram" style="width: 100%; max-width: 420px;">
+            <p style="color: #757575;">Illustration of the design thinking process in this project.</p>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="container">
+        <p><a href="behind-curtain.html">Behind the Curtains</a></p>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

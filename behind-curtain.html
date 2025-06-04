@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the Curtains | Victor Gao Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #fff;
+            color: #000;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0 0 40px 0;
+        }
+        .devlog {
+            max-width: 740px;
+            margin: 0;
+            padding: 38px 16px 0 16px;
+        }
+        h2, h3, h4 {
+            margin-top: 28px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        h2 { font-size: 1.4em; }
+        h3 { font-size: 1.1em; }
+        h4 { font-size: 1em; }
+        ul, p { margin-bottom: 14px; }
+        code {
+            background: #f4f4f4;
+            font-size: 1em;
+            padding: 1px 2px;
+        }
+        img {
+            max-width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+        .home-link {
+            display: block;
+            margin-top: 50px;
+            margin-left: 16px;
+            font-size: 1em;
+            color: inherit;
+            text-decoration: underline;
+        }
+        .home-link:hover { text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="devlog">
+    <h2>Behind the Curtains (DevLog)</h2>
+    <h3>Making of the Website</h3>
+    <ul>
+        <li><b>Design Decisions</b> Painstakingly rebuilt the website two times so that it would look not generic but also clean. Source of inspiration: Google Material for color and layout, but also Microsoft-style square tile buttons because all round buttons looked bad on my end during dev.</li>
+        <li><b>Challenges during development:</b> Learning new features and adapting them into the code like legos, but in the same time not provoke format destroying errors that would screw up all the existing content.</li>
+        <li><b>Development process:</b> Started out planning the general design/layout, took inspiration from existing sites, then planned navigation, added JavaScript for the modal and toggles, and focused on accessibility with keyboard navigation and semantic HTML.</li>
+        <li><b>Testing and feedback:</b> Checked site in Chrom and Edge under different layouts/sizes/aspectratios, tested keyboard navigation, frequently referred to peer students on how my website looked like and took heavy inspiration from tips they gave.</li>
+        <li><b>Challenges:</b> Not destroying the formatting of the tiles/navigation bar, and make the header banner look consistent throughout different pages, as well as keeping the page sizes consistent.</li>
+    </ul>
+    <h4>Code Snapshots:</h4>
+    <img src="images/CODEOFINTRO.png" alt="Screenshot of JavaScript code">
+    <p style="color: #555;">Sample of intro.html and navbar coding</p>
+    <img src="images/EARLIERVERSIONS.png" alt="Screenshot of earlier versions in development">
+    <p style="color: #555;">Screenshot of earlier versions in development. Existing framework and functionalities are noticeable, but aside from this no similarities in later layouts in theme, font, or color scheme.</p>
+    <h4>What I Learned</h4>
+    <p>
+        This project taught me to not procrastinate and to be ready to face development hell - that is, screwing up formats and restarting, as well as stopping development because of unsatisfied self-expectations. Also learned HTML, CSS and JavaScript in small quantities. 
+    </p>
+    <p>
+        Developer tools usage was VScode, Browser inspection console, etc. 
+    </p>
+</div>
+<a href="index.html" class="home-link">Return to Home</a>
+</body>
+</html>

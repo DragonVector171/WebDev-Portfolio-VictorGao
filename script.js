@@ -1,35 +1,81 @@
-// Form validation
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+// --- Modal Elements ---
+const contactBtn = document.getElementById('contactBtn');
+const contactModal = document.getElementById('contactModal');
+const contactCloseBtn = contactModal ? contactModal.querySelector('.modal-close') : null;
 
-    if (!validateEmail(email)) {
-        alert('Please enter a valid email address');
-        return;
+const contactForm = document.getElementById('contactForm');
+const sentModal = document.getElementById('sentModal');
+const sentCloseBtn = document.getElementById('sentCloseBtn');
+
+// --- Open Contact Modal ---
+if (contactBtn && contactModal) {
+    contactBtn.addEventListener('click', () => {
+        contactModal.style.display = 'flex';
+        setTimeout(() => {
+            const nameInput = document.getElementById('name');
+            if (nameInput) nameInput.focus();
+        }, 100);
+    });
+}
+
+// --- Close Contact Modal ---
+if (contactCloseBtn && contactModal) {
+    contactCloseBtn.addEventListener('click', () => {
+        contactModal.style.display = 'none';
+        contactBtn && contactBtn.focus();
+    });
+}
+
+// --- Open Sent Modal and Reset Contact Form ---
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (name === '' || email === '' || message === '') {
+            alert('Please fill in all fields');
+            return;
+        }
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        // Success: Hide Contact Modal, show Sent Modal
+        contactForm.reset();
+        contactModal.style.display = 'none';
+        if (sentModal) {
+            sentModal.style.display = 'flex';
+            setTimeout(() => { sentCloseBtn && sentCloseBtn.focus(); }, 100);
+        }
+    });
+}
+
+// --- Close Sent Modal ---
+if (sentCloseBtn && sentModal) {
+    sentCloseBtn.addEventListener('click', () => {
+        sentModal.style.display = 'none';
+        contactBtn && contactBtn.focus();
+    });
+}
+
+// --- Click Outside to Close Any Modal ---
+window.addEventListener('click', function (e) {
+    if (e.target === contactModal) {
+        contactModal.style.display = 'none';
+        contactBtn && contactBtn.focus();
     }
-
-    if (message.length < 10) {
-        alert('Message must be at least 10 characters');
-        return;
+    if (e.target === sentModal) {
+        sentModal.style.display = 'none';
+        contactBtn && contactBtn.focus();
     }
-
-    // Submit form logic here
-    alert('Form submitted successfully!');
-    this.reset();
 });
 
+// --- Utility: Email Validation ---
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
-}
-
-// Modal functionality
-function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
 }

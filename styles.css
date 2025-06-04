@@ -1,105 +1,338 @@
 :root {
-    --primary: #2c3e50;
-    --secondary: #3498db;
-    --accent: #e74c3c;
+    --background: #ffffff;
+    --text: #222222;
+    --text-light: #757575;
+    --primary: #4285F4;
+    --card-bg: #f8f9fa;
+    --header-bg: #f1f1f1;
+    --border: #e0e0e0;
+    --hover-blue: #e3f0fd;
 }
 
-* {
-    box-sizing: border-box;
+/* Main body background: subtle, wide light grey lines */
+body {
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--primary);
+    background-image: repeating-linear-gradient(
+        135deg,
+        rgba(200,200,200,0.035) 0px,
+        rgba(200,200,200,0.035) 2px,
+        transparent 2px,
+        transparent 48px
+    );
 }
 
+.projects-banner,
+.project-card,
+.modal-content,
+.code-screenshot,
+img,
+input,
+textarea,
+.btn,
+.expand-btn,
+.profile-photo,
+footer,
+header,
+.accessibility-image img,
+.global-goals-image img,
+.design-thinking-image img {
+    border-radius: 0 !important;
+}
+
+/* Slightly more compact width and less padding */
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px 16px 0 16px;
+}
+
+/* HEADER: Asiimov lines, less vertical space */
 header {
-    background: var(--primary);
-    color: white;
-    padding: 1rem;
+    background-color: var(--header-bg);
+    padding: 12px 16px 12px 16px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: auto;
+    background-image: repeating-linear-gradient(
+        135deg,
+        rgba(255,184,108,0.13) 0px,
+        rgba(255,184,108,0.13) 3px,
+        transparent 3px,
+        transparent 40px
+    );
+    background-blend-mode: lighten;
+}
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
-nav ul {
+h1 {
+    font-size: 1.35rem;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+nav {
     display: flex;
-    gap: 2rem;
-    list-style: none;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 2px;
 }
-
 nav a {
-    color: white;
+    color: var(--text-light);
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 10px;
+    padding: 7px 11px;
+    background: none;
+    border: none;
+    outline: none;
+    transition: color 0.15s;
+}
+nav a.active {
+    color: var(--primary);
+    border-bottom: none;
+    background: none;
+}
+nav a:hover,
+nav a:focus {
+    color: var(--primary);
+    background: none;
+    border-bottom: none;
 }
 
-nav a:hover {
-    color: var(--secondary);
+/* Less vertical margin/padding for main content */
+.main-spaced {
+    padding-top: 16px;
+    padding-bottom: 28px;
+}
+
+/* Introduction: reduce gap, photo a bit smaller, more compact */
+.introduction {
+    display: flex;
+    align-items: flex-start;
+    margin: 24px 0 28px 0;
+    gap: 20px;
+}
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 18px;
+}
+.intro-text {
+    max-width: 600px;
+    font-size: 1rem;
+}
+
+/* Projects banner: more compact, still clear */
+.projects-banner {
+    background-color: var(--card-bg);
+    border: 2px solid var(--primary);
+    padding: 20px 12px;
+    margin: 32px 0;
+    text-align: center;
+    transition: background 0.15s;
+    font-size: 1.06rem;
+}
+.projects-banner:hover {
+    background-color: var(--hover-blue);
+}
+.projects-banner h2 {
+    margin: 0 0 8px;
+}
+.projects-banner p {
+    margin: 8px 0 10px 0;
 }
 
 main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    min-height: calc(100vh - 64px);
 }
 
-.intro {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-}
-
-.contact-form {
-    background: white;
-    padding: 2rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
-}
-
-form {
-    display: grid;
-    gap: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-button {
-    background: var(--secondary);
+.btn {
+    display: inline-block;
+    background-color: var(--primary);
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.10s, color 0.10s;
     border: none;
-    border-radius: 5px;
+    box-shadow: none;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    margin: 8px 0;
+}
+.btn:hover,
+.btn:focus {
+    background-color: var(--hover-blue);
+    color: var(--primary);
+    outline: none;
 }
 
-button:hover {
-    transform: scale(1.05);
+.expand-btn {
+    background-color: #f1f1f1;
+    color: var(--text);
+    padding: 8px 13px;
+    border: 2px solid var(--primary);
+    font-size: 0.96rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color 0.10s, color 0.10s, border 0.10s;
+    margin-top: 10px;
+}
+.expand-btn:hover,
+.expand-btn:focus {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    outline: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fff;
+    margin: 7% auto;
+    padding: 20px 18px;
+    max-width: 350px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    border: 2px solid var(--primary);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    border: none;
+    background: none;
+}
+.close:hover, .close:focus {
+    color: #EA4335;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 7px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.98rem;
+}
+
+.project-banners {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    padding: 16px 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+    margin-bottom: 8px;
+}
+.project-card:hover {
+    transform: translateY(-2px);
 }
 
 footer {
+    background-color: var(--card-bg);
+    padding: 15px 0;
     text-align: center;
-    padding: 1rem;
-    background: var(--primary);
-    color: white;
+    color: var(--text-light);
+    border-top: 2px solid var(--primary);
+    margin-top: 36px;
+    font-size: 1rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
+.code-screenshot {
+    border: 2px solid var(--primary);
+    margin: 8px 0;
+    max-width: 100%;
+    display: block;
+}
+
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 2000;
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 14px;
+}
+.skip-link:focus {
+    left: 10px;
+    top: 10px;
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .container, header {
+        padding: 8px !important;
     }
-    
-    nav ul {
+    .introduction {
         flex-direction: column;
-        gap: 1rem;
-        padding-top: 1rem;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .profile-photo {
+        margin-bottom: 8px;
+        margin-right: 0;
+        width: 100%;
+        height: auto;
+        max-width: 170px;
+    }
+    .projects-banner {
+        padding: 12px 4px;
+    }
+    .project-card {
+        padding: 8px 2px;
+    }
+    main {
+        padding-bottom: 12px;
     }
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Gao // WebDev Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --header-max-width: 1200px; }
+        header { background-color: var(--header-bg); background-image: repeating-linear-gradient(135deg,rgba(255,184,108,0.10) 0px,rgba(255,184,108,0.08) 3px,transparent 3px,transparent 32px); border-bottom: 1.5px solid var(--primary); width: 100%; }
+        .header-container { max-width: var(--header-max-width); margin: 0 auto; box-sizing: border-box; padding: 24px 30px 18px 30px; }
+        .header-row { display: flex; align-items: baseline; justify-content: space-between; width: 100%; }
+        .main-title-group { display: flex; align-items: baseline; }
+        .main-title { font-family: 'Google Sans', Arial, sans-serif; font-size: 2.1rem; font-weight: 700; color: #222; letter-spacing: 0.5px; margin: 0; background: none; border: none; line-height: 1.12; }
+        .title-slash { color: #4285F4; font-size: 2rem; margin: 0 0.27rem 0 0.2rem; font-family: inherit; font-weight: 700; }
+        .portfolio-subtitle { font-family: 'Google Sans', Arial, sans-serif; font-size: 1.07rem; color: #666; letter-spacing: 0.12em; font-weight: 700; text-transform: uppercase; margin-left: 0.18rem; margin-bottom: 1px; line-height: 1.08; }
+        nav { display: flex; align-items: baseline; gap: 0.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 1rem; font-weight: 600; line-height: 1.08; margin: 0 7px; padding: 6px 11px; border: none; outline: none; transition: color 0.14s; background: none; display: inline-block; }
+        nav a.active { color: var(--primary); }
+        nav a:hover, nav a:focus { color: var(--primary); background: none; }
+        @media (max-width: 900px) { .header-container { padding: 12px 4px 10px 4px; } .header-row { flex-direction: column; align-items: flex-start; gap: 10px; } .main-title { font-size: 1.15rem; } .portfolio-subtitle { font-size: 0.79rem; } nav { justify-content: flex-end; margin-top: 4px; flex-wrap: wrap; } }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header>
+    <div class="header-container">
+        <div class="header-row">
+            <span class="main-title-group">
+                <span class="main-title">Victor Gao</span>
+                <span class="title-slash">//</span>
+                <span class="portfolio-subtitle">WebDev Portfolio</span>
+            </span>
+            <nav aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="design-thinking.html">Design Thinking</a>
+                <a href="global-goals.html" class="active">Global Goals</a>
+                <a href="accessibility.html">Accessibility</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<main class="container main-spaced" id="main-content">
+    <section style="max-width: 650px; margin: auto;">
+        <h2><strong>[UN Global Goal: Quality Education]</strong></h2>
+        <p>
+            The United Nations’ Sustainable Development Goals (SDGs) aim to create a better, more sustainable future for all. <strong>SDG4: Quality Education</strong> interests me the most. Access to education is what allows changes inside any society, as well as evolution and rise of countries, as well as the human civilization globally. It's what matters most.
+        </p>
+        <p>
+            In my web development journey and especially in the Microsoft Open WebDev Course, I have seen how the Internet and its possibility to free education is crucial. Every question I had could be answered with a Google search and had that been accessible to everyone it would be absolutely world-altering.
+        </p>
+        <div class="global-goals-image" style="margin-top: 18px;">
+            <img src="images/globalgoal.png" alt="UN Global Goals illustration" style="width: 100%; max-width: 1000px;">
+            <p style="color: #757575;">Visual representation of the UN Global Goal SDG4.</p>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="container">
+        <p><a href="behind-curtain.html">Behind the Curtains</a></p>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

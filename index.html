@@ -3,49 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Victor Gao // WebDev Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Sans for overall body and skills section -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --header-max-width: 1200px; }
+        body { font-family: 'Google Sans', Arial, sans-serif; }
+        header {
+            background-color: var(--header-bg);
+            background-image: repeating-linear-gradient(135deg,rgba(255,184,108,0.10) 0px,rgba(255,184,108,0.08) 3px,transparent 3px,transparent 32px);
+            border-bottom: 1.5px solid var(--primary); width: 100%;
+        }
+        .header-container { max-width: var(--header-max-width); margin: 0 auto; box-sizing: border-box; padding: 24px 30px 18px 30px; }
+        .header-row { display: flex; align-items: baseline; justify-content: space-between; width: 100%; }
+        .main-title-group { display: flex; align-items: baseline; }
+        .main-title { font-family: 'Google Sans', Arial, sans-serif; font-size: 2.1rem; font-weight: 700; color: #222; letter-spacing: 0.5px; margin: 0; background: none; border: none; line-height: 1.12; }
+        .title-slash { color: #4285F4; font-size: 2rem; margin: 0 0.27rem 0 0.2rem; font-family: inherit; font-weight: 700; }
+        .portfolio-subtitle { font-family: 'Google Sans', Arial, sans-serif; font-size: 1.07rem; color: #666; letter-spacing: 0.12em; font-weight: 700; text-transform: uppercase; margin-left: 0.18rem; margin-bottom: 1px; line-height: 1.08; }
+        nav { display: flex; align-items: baseline; gap: 0.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 1rem; font-weight: 600; line-height: 1.08; margin: 0 7px; padding: 6px 11px; border: none; outline: none; transition: color 0.14s; background: none; display: inline-block; }
+        nav a.active { color: var(--primary); }
+        nav a:hover, nav a:focus { color: var(--primary); background: none; }
+        @media (max-width: 900px) {
+            .header-container { padding: 12px 4px 10px 4px; }
+            .header-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .main-title { font-size: 1.15rem; }
+            .portfolio-subtitle { font-size: 0.79rem; }
+            nav { justify-content: flex-end; margin-top: 4px; flex-wrap: wrap; }
+        }
+        .skills-section {
+            margin: 22px 0 36px 0;
+            text-align: center;
+        }
+        .skills-label {
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #333;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .skills-langs {
+            font-family: 'Google Sans', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 1.04em;
+            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-top: 2px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0 7px;
+        }
+        .skills-divider {
+            color: #bdbdbd;
+            font-weight: 400;
+            padding: 0 3px;
+        }
+        /* Contact Modal Styles (and Sent Modal uses same) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(40, 48, 60, 0.18);
+            justify-content: center;
+            align-items: center;
+        }
+        .contact-modal-content {
+            background: #fff;
+            max-width: 340px;
+            width: 95vw;
+            margin: 0 auto;
+            padding: 28px 24px 20px 24px;
+            border-radius: 0;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #757575;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+        .contact-title {
+            margin: 0 0 20px 0;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: 0.2px;
+        }
+        .contact-label {
+            margin-top: 14px;
+            margin-bottom: 3px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #222;
+            letter-spacing: 0.1px;
+            display: block;
+        }
+        .contact-input {
+            width: 100%;
+            padding: 9px 10px;
+            font-size: 1em;
+            border: 1.2px solid #e0e0e0;
+            border-radius: 0;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+            outline: none;
+            transition: border-color 0.15s;
+            background: #f8f9fa;
+            color: #222;
+        }
+        .contact-input:focus {
+            border-color: #4285F4;
+            background: #fff;
+        }
+        .contact-btn {
+            margin-top: 16px;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 1.09em;
+            font-weight: 700;
+            background: #4285F4;
+            color: #fff;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background 0.12s;
+            letter-spacing: 0.06em;
+        }
+        .contact-btn:hover, .contact-btn:focus {
+            background: #3367d6;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Victor Gao</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="design-thinking.html">Design Process</a></li>
-                <li><a href="global-goals.html">Global Goals</a></li>
-                <li><a href="accessibility.html">Accessibility</a></li>
-            </ul>
-        </nav>
-    </header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header>
+    <div class="header-container">
+        <div class="header-row">
+            <span class="main-title-group">
+                <span class="main-title">Victor Gao</span>
+                <span class="title-slash">//</span>
+                <span class="portfolio-subtitle">WebDev Portfolio</span>
+            </span>
+            <nav aria-label="Main Navigation">
+                <a href="index.html" class="active">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="design-thinking.html">Design Thinking</a>
+                <a href="global-goals.html">Global Goals</a>
+                <a href="accessibility.html">Accessibility</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<main class="container main-spaced" id="main-content">
+    <section class="introduction">
+        <img src="images/PFP.jpg" alt="ProfilePicture" class="profile-photo">
+        <div class="intro-text">
+            <h2 style="margin-top:0;"><strong>About Me</strong></h2>
+            <p>
+                I'm Victor, a (new) web developer. Jack of all trades, master of none. 
+            </p>
+            <p>
+                Consider this website a tech demonstrator: it sums up my skills in HTML, CSS, JavaScript and UI/UX design after a 11-unit web course, taken over the span of roughly a month. 
+            </p>
+        </div>
+    </section>
+    <!-- SKILLS SECTION -->
+    <section class="skills-section">
+        <div class="skills-label">SKILLS</div>
+        <div class="skills-langs">
+            PYTHON <span class="skills-divider">|</span>
+            C++ <span class="skills-divider">|</span>
+            HTML <span class="skills-divider">|</span>
+            CSS <span class="skills-divider">|</span>
+            JAVASCRIPT <span class="skills-divider">|</span>
+            BATCH
+        </div>
+    </section>
+    <section class="projects-banner">
+        <h2><strong>See My Projects and Hobbies</strong></h2>
+        <p>Explore my coding projects, creative work, and hobbies that drive my passion for technology and learning!</p>
+        <a href="portfolio.html" class="btn">View Portfolio</a>
+    </section>
+    <section class="contact-section" style="margin-top: 28px;">
+        <button class="btn" id="contactBtn" aria-haspopup="dialog" aria-controls="contactModal">Contact Me</button>
+    </section>
+</main>
+<!-- Contact Modal -->
+<div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" tabindex="-1" style="display:none;">
+  <div class="modal-content contact-modal-content">
+    <button type="button" class="modal-close" aria-label="Close contact form">Close</button>
+    <h2 id="contactTitle" class="contact-title">Contact Me</h2>
+    <form id="contactForm" autocomplete="off">
+      <label for="name" class="contact-label">Name</label>
+      <input type="text" id="name" name="name" class="contact-input" required>
+      <label for="email" class="contact-label">Email</label>
+      <input type="email" id="email" name="email" class="contact-input" required>
+      <label for="message" class="contact-label">Message</label>
+      <textarea id="message" name="message" class="contact-input" rows="4" required></textarea>
+      <button type="submit" class="contact-btn">Send Message</button>
+    </form>
+  </div>
+</div>
+<!-- Message Sent Modal -->
+<div id="sentModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="sentTitle" tabindex="-1" style="display:none;">
+  <div class="modal-content contact-modal-content" style="text-align:center;">
+    <button type="button" class="modal-close" aria-label="Close sent message" id="sentCloseBtn">Close</button>
+    <h2 id="sentTitle" class="contact-title" style="margin-bottom:14px;">Message Sent</h2>
+    <p style="font-size:1.1em; color:#333; margin-bottom: 0;">Thanks for all the fish!</p>
+  </div>
+</div>
+<footer>
+    <div class="container">
+        <p><a href="behind-curtain.html">Behind the Curtains</a></p>
+    </div>
+</footer>
+<script>
+// Modal functionality
+const contactBtn = document.getElementById('contactBtn');
+const contactModal = document.getElementById('contactModal');
+const closeBtn = document.querySelector('#contactModal .modal-close');
+const sentModal = document.getElementById('sentModal');
+const sentCloseBtn = document.getElementById('sentCloseBtn');
 
-    <main>
-        <section class="intro">
-            <h2>Web Developer Portfolio</h2>
-            <p>Placeholder</p>
-        
-        </section>
+// Open modal
+if (contactBtn && contactModal) {
+    contactBtn.addEventListener('click', () => {
+        contactModal.style.display = 'flex';
+        setTimeout(() => {
+            const nameInput = document.getElementById('name');
+            if (nameInput) nameInput.focus();
+        }, 100);
+    });
+}
 
-        <section class="contact-form">
-            <h2>[Javascript interactive Section 1] Contact Me</h2>
-            <form id="contactForm">
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" required></textarea>
-                
-                <button type="submit">Send</button>
-            </form>
-        </section>
-    </main>
+// Close contact modal
+if (closeBtn && contactModal) {
+    closeBtn.addEventListener('click', () => {
+        contactModal.style.display = 'none';
+        contactBtn.focus();
+    });
+}
 
-    <footer>
-        <p>&copy; 2024 - Victor Gao</p>
-        <a href="behind-curtain.html">Behind the Curtain</a>
-    </footer>
+// Close when clicking outside modals
+window.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+        contactModal.style.display = 'none';
+        contactBtn.focus();
+    }
+    if (e.target === sentModal) {
+        sentModal.style.display = 'none';
+        contactBtn.focus();
+    }
+});
 
-    <script src="script.js"></script>
+// Form validation and "message sent" modal logic
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (name === '' || email === '' || message === '') {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        // Show "Message Sent" modal
+        contactForm.reset();
+        contactModal.style.display = 'none';
+        sentModal.style.display = 'flex';
+        setTimeout(() => {
+            sentCloseBtn && sentCloseBtn.focus();
+        }, 100);
+    });
+}
+
+// Close the "Message Sent" modal
+if (sentCloseBtn && sentModal) {
+    sentCloseBtn.addEventListener('click', () => {
+        sentModal.style.display = 'none';
+        contactBtn.focus();
+    });
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+</script>
 </body>
 </html>
